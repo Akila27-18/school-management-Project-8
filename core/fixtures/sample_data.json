@@ -1,0 +1,76 @@
+[
+  {
+    "model": "core.school",
+    "pk": 1,
+    "fields": {
+      "name": "Green Valley High",
+      "address": "123 Main Street"
+    }
+  },
+  {
+    "model": "core.school",
+    "pk": 2,
+    "fields": {
+      "name": "Sunrise Public School",
+      "address": "456 Park Avenue"
+    }
+  },
+  {
+    "model": "core.subject",
+    "pk": 1,
+    "fields": { "name": "Mathematics" }
+  },
+  {
+    "model": "core.subject",
+    "pk": 2,
+    "fields": { "name": "Physics" }
+  },
+  {
+    "model": "core.subject",
+    "pk": 3,
+    "fields": { "name": "English" }
+  },
+  {
+    "model": "core.teacher",
+    "pk": 1,
+    "fields": {
+      "name": "Mr. Smith",
+      "subjects": [1, 2]
+    }
+  },
+  {
+    "model": "core.teacher",
+    "pk": 2,
+    "fields": {
+      "name": "Ms. Johnson",
+      "subjects": [3]
+    }
+  },
+  {
+    "model": "core.student",
+    "pk": 1,
+    "fields": {
+      "name": "Alice",
+      "age": 14,
+      "school": 1
+    }
+  },
+  {
+    "model": "core.student",
+    "pk": 2,
+    "fields": {
+      "name": "Bob",
+      "age": 15,
+      "school": 1
+    }
+  },
+  {
+    "model": "core.student",
+    "pk": 3,
+    "fields": {
+      "name": "Charlie",
+      "age": 13,
+      "school": 2
+    }
+  }
+]
