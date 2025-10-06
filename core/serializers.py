@@ -1,30 +1,39 @@
 from rest_framework import serializers
-from .models import School, Teacher, Student, Subject
+from .models import User, StudentProfile, ParentProfile, Course, Exam, Mark, Attendance
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'role']
 
 class StudentSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
-        model = Student
-        fields = ["id", "name", "age"]
+        model = StudentProfile
+        fields = ['id', 'user', 'classroom', 'roll_number']
 
-
-class SchoolSerializer(serializers.ModelSerializer):
-    students = StudentSerializer(many=True, read_only=True)
-
+class ParentSerializer(serializers.ModelSerializer):
+    children = StudentSerializer(many=True)
     class Meta:
-        model = School
-        fields = ["id", "name", "address", "students"]
+        model = ParentProfile
+        fields = ['id', 'user', 'children']
 
-
-class SubjectSerializer(serializers.ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Subject
-        fields = ["id", "name"]
+        model = Course
+        fields = '__all__'
 
-
-class TeacherSerializer(serializers.ModelSerializer):
-    subjects = SubjectSerializer(many=True, read_only=True)
-
+class ExamSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Teacher
-        fields = ["id", "name", "subjects"]
+        model = Exam
+        fields = '__all__'
+
+class MarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mark
+        fields = '__all__'
+
+class AttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Attendance
+        fields = '__all__'
